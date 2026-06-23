@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定額制バナー制作プラン｜VOTEC IMCご契約店舗様向け</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap');
+
+  :root {
+    --primary: #0088AA;
+    --primary-dark: #006688;
+    --primary-light: #00B0D8;
+    --accent: #00B0D8;
+    --accent-light: #DFF6FB;
+    --accent-warm: #e06b1a;
+    --gold: #c8920c;
+    --bg: #eef6fa;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --border: #c8e8f0;
+    --highlight: #fff8e8;
+    --highlight-border: #e8c060;
+    --page-w: 900px;
+    --nav-h: 52px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #d8eef5;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.75;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding-top: var(--nav-h);
+  }
+
+  /* ─── FIXED NAV ─── */
+  .doc-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    height: var(--nav-h);
+    background: rgba(0, 102, 136, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .nav-title {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    color: #fff;
+    padding: 0 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    margin-right: 4px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 8px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: visible;
+    flex-wrap: nowrap;
+  }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.82);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    border: 1px solid transparent;
+  }
+  .nav-links a:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-color: rgba(255,255,255,0.2);
+  }
+  .nav-links a .nav-num {
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 1px 5px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.02em;
+  }
+
+  .page {
+    width: var(--page-w);
+    margin: 28px auto;
+    background: var(--surface);
+    border-radius: 6px;
+    box-shadow: 0 4px 28px rgba(0,0,0,0.12);
+    overflow: hidden;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: calc(var(--nav-h) + 16px);
+  }
+
+  .page-body { padding: 30px 40px 34px; flex: 1; }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    background: var(--primary);
+    padding: 26px 40px 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+  .header-left { flex: 1; }
+  .header-badge {
+    background: #fff;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 21px;
+    color: #fff;
+    line-height: 1.45;
+  }
+  .page-header .subtitle {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 5px;
+  }
+  .header-right { text-align: right; flex-shrink: 0; }
+  .header-right .brand { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 0.12em; }
+  .header-right .page-num { font-size: 10.5px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .header-right .achievement {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.9);
+    margin-top: 8px;
+    white-space: nowrap;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  /* ─── PAIN POINTS ─── */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .pain-card {
+    background: #fdf4ec;
+    border: 1px solid #f5c898;
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .pain-icon {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent-warm);
+    color: #fff;
+    font-size: 13px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .pain-text { font-size: 11.5px; color: #7a3a10; line-height: 1.65; }
+
+  /* ─── ARROW ─── */
+  .arrow-bridge {
+    text-align: center;
+    margin: 0 0 16px;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ─── SOLUTION BANNER ─── */
+  .solution-banner {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+    border-radius: 8px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+  .solution-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .solution-text { font-size: 15.5px; font-weight: 700; color: #fff; line-height: 1.5; }
+  .solution-sub { font-size: 10.5px; color: rgba(255,255,255,0.75); margin-top: 5px; }
+  .solution-price { flex-shrink: 0; text-align: right; }
+  .solution-price .from { font-size: 10.5px; color: rgba(255,255,255,0.65); }
+  .solution-price .price-val { font-size: 30px; font-weight: 900; color: #ffe082; line-height: 1.1; }
+  .solution-price .per { font-size: 10.5px; color: rgba(255,255,255,0.65); }
+
+  /* ─── DIRECTION SERVICE ─── */
+  .direction-hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0096b8 58%, #f5b640 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 102, 136, 0.24);
+  }
+  .direction-hero::before {
+    content: 'NEW';
+    position: absolute;
+    top: 12px;
+    right: -34px;
+    width: 120px;
+    text-align: center;
+    transform: rotate(35deg);
+    background: var(--accent-warm);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    padding: 3px 0;
+  }
+  .direction-label { font-size: 10px; font-weight: 900; color: #ffe082; letter-spacing: 0.12em; margin-bottom: 6px; }
+  .direction-title { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.35; margin-bottom: 7px; }
+  .direction-title strong {
+    color: #ffe082;
+    background: rgba(255,255,255,0.12);
+    padding: 0 5px;
+    border-radius: 3px;
+  }
+  .direction-copy { font-size: 12px; color: rgba(255,255,255,0.92); line-height: 1.75; max-width: 690px; }
+
+  .hero-catch {
+    display: inline-block;
+    background: #fff;
+    color: var(--primary-dark);
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.4;
+    padding: 7px 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .impact-card {
+    background: #fffdf7;
+    border: 1px solid #f0c46a;
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .impact-label { font-size: 10px; font-weight: 900; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .impact-title { font-size: 14px; font-weight: 900; color: var(--accent-warm); line-height: 1.35; margin-bottom: 4px; }
+  .impact-text { font-size: 10.5px; color: var(--text-muted); line-height: 1.65; }
+
+  .sales-cta-strip {
+    background: #fff;
+    border: 2px solid #ffe082;
+    border-left: 6px solid var(--gold);
+    border-radius: 7px;
+    padding: 13px 17px;
+    margin: -4px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sales-cta-label {
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    padding: 5px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .sales-cta-main {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--primary-dark);
+    line-height: 1.45;
+  }
+  .sales-cta-sub {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.55;
+  }
+
+  .talk-box {
+    background: #fffdf7;
+    border: 1px solid #f0c46a;
+    border-radius: 7px;
+    padding: 13px 16px;
+    margin-bottom: 18px;
+  }
+  .talk-title {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    margin-bottom: 5px;
+  }
+  .talk-main {
+    color: var(--primary-dark);
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.55;
+  }
+  .talk-note {
+    color: var(--text-muted);
+    font-size: 10.5px;
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .opportunity-card {
+    background: #f0f9fc;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 13px;
+  }
+  .opportunity-head {
+    font-size: 11.5px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  .opportunity-body {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .quick-targets {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .quick-target {
+    background: #eef8fb;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+    padding: 9px 11px;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.5;
+  }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 18px;
+  }
+  .ba-panel {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #fff;
+  }
+  .ba-panel.before { border-color: #f1b47b; }
+  .ba-panel.after { border-color: #80cfe3; box-shadow: 0 4px 14px rgba(0, 136, 170, 0.12); }
+  .ba-head {
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .before .ba-head { background: var(--accent-warm); }
+  .after .ba-head { background: var(--primary); }
+  .ba-sub {
+    font-size: 10px;
+    opacity: 0.86;
+    font-weight: 700;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+  .ba-list { list-style: none; padding: 12px 15px 13px; }
+  .ba-list li {
+    position: relative;
+    padding-left: 17px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .ba-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d8a260;
+  }
+  .after .ba-list li { color: var(--primary-dark); font-weight: 700; }
+  .after .ba-list li::before { background: var(--accent); }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 28px;
+    font-weight: 900;
+  }
+  .ba-conclusion {
+    background: #fff8e8;
+    border: 1px solid #e8c060;
+    border-radius: 6px;
+    padding: 11px 16px;
+    margin: -4px 0 18px;
+    text-align: center;
+    color: #6a4a00;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .sales-merit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .sales-merit-card {
+    background: #fff;
+    border: 1px solid #f0c46a;
+    border-top: 4px solid var(--gold);
+    border-radius: 6px;
+    padding: 12px 13px;
+  }
+  .sales-merit-num { font-size: 10px; font-weight: 900; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 4px; }
+  .sales-merit-title { font-size: 12px; font-weight: 900; color: var(--primary-dark); margin-bottom: 4px; line-height: 1.45; }
+  .sales-merit-text { font-size: 10.5px; color: var(--text-muted); line-height: 1.65; }
+
+  .role-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-size: 11.5px;
+  }
+  .role-table th {
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 8px 10px;
+    text-align: center;
+    font-weight: 700;
+  }
+  .role-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: center;
+    background: #fff;
+  }
+  .role-table td:first-child {
+    background: #eef8fb;
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-align: left;
+  }
+  .role-main { color: var(--primary); font-weight: 900; }
+  .role-sub { color: var(--text-muted); font-weight: 700; }
+
+  /* ─── TARGET ─── */
+  .target-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .target-card {
+    background: var(--accent-light);
+    border: 1px solid #94d4e8;
+    border-radius: 6px;
+    padding: 11px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .target-check { color: var(--primary); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .target-text { font-size: 11px; color: #004455; line-height: 1.65; }
+
+  /* ─── DESC BOX ─── */
+  .desc-box {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 13px 16px;
+    margin-bottom: 14px;
+    font-size: 10.5px;
+    color: var(--primary-dark);
+    line-height: 1.75;
+  }
+
+  /* ─── FEATURE TABLE ─── */
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 22px;
+    font-size: 12px;
+  }
+  .feature-table th {
+    background: var(--primary); color: #fff;
+    padding: 10px 14px; text-align: left;
+    font-weight: 600; font-size: 12px; letter-spacing: 0.04em;
+  }
+  .feature-table th:first-child { border-radius: 4px 0 0 0; }
+  .feature-table th:last-child  { border-radius: 0 4px 0 0; }
+  .feature-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.65; }
+  .feature-table tr:last-child td { border-bottom: none; }
+  .feature-table tr:nth-child(even) td { background: #f0f9fc; }
+  .feature-tag {
+    display: inline-block; background: var(--primary); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 3px; margin-right: 6px; white-space: nowrap;
+  }
+  .benefit-tag {
+    display: inline-block; background: var(--accent); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 3px; margin-right: 6px; white-space: nowrap;
+  }
+
+  /* ─── SCENE GRID ─── */
+  .scene-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .scene-card { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .scene-head { background: var(--primary); color: #fff; font-size: 10.5px; font-weight: 700; padding: 8px 12px; letter-spacing: 0.04em; }
+  .scene-body { padding: 10px 12px; font-size: 11.5px; color: var(--text); line-height: 1.65; background: #f0f9fc; }
+
+  /* ─── UNIT PRICE TABLE ─── */
+  .unit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .unit-table th {
+    background: #5a5a5a;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .unit-table th:first-child { border-radius: 4px 0 0 0; text-align: left; }
+  .unit-table th:last-child  { border-radius: 0 4px 0 0; }
+  .unit-table th.th-trial { background: var(--gold); }
+  .unit-table th.th-plan  { background: var(--accent); }
+  .unit-table td {
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--primary);
+  }
+  .unit-table td:first-child {
+    background: #f0f4f5;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: left;
+  }
+  .unit-table td.td-trial {
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 14px;
+  }
+  .unit-table .arrow-cell {
+    background: #fff;
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    padding: 0 2px;
+    width: 18px;
+  }
+
+  /* ─── TRIAL BANNER (compact) ─── */
+  .trial-banner {
+    background: var(--highlight);
+    border: 2px solid var(--highlight-border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .trial-label { background: var(--gold); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+  .trial-main { flex: 1; }
+  .trial-title { font-size: 13px; font-weight: 700; color: var(--primary-dark); }
+  .trial-note { font-size: 10.5px; color: var(--text-muted); margin-top: 2px; }
+  .trial-price { text-align: right; flex-shrink: 0; }
+  .trial-price .tp-val { font-size: 20px; font-weight: 700; color: var(--gold); }
+  .trial-price .tp-unit { font-size: 10.5px; color: var(--text-muted); }
+
+  /* ─── MATRIX TABLE (compact) ─── */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin-bottom: 10px;
+  }
+  .matrix-table th { background: var(--primary); color: #fff; padding: 8px 10px; text-align: center; font-size: 10.5px; font-weight: 600; }
+  .matrix-table th.th-l { text-align: left; border-radius: 4px 0 0 0; }
+  .matrix-table th.th-rec { background: var(--gold); }
+  .matrix-table th.th-rec::after { content: '★ おすすめ'; display: block; font-size: 9px; font-weight: 400; color: rgba(255,255,255,0.85); margin-top: 1px; }
+  .matrix-table th:last-child { border-radius: 0 4px 0 0; }
+  .matrix-table td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; vertical-align: middle; }
+  .matrix-table td.td-l { text-align: left; font-weight: 700; background: #eef8fb; color: var(--primary); font-size: 11px; }
+  .cell-price { font-size: 12px; font-weight: 700; color: var(--primary); display: block; }
+  .cell-total { font-size: 9px; color: var(--text-muted); display: block; margin-top: 1px; }
+  .col-rec { background: #fffbf0; }
+  .col-rec .cell-price { color: var(--gold); }
+
+  /* ─── PRICE NOTE ─── */
+  .price-note {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    background: #f0f9fc;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 14px;
+    line-height: 1.85;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  .price-note li { padding-left: 14px; position: relative; }
+  .price-note li::before { content: '※'; position: absolute; left: 0; color: var(--accent-warm); font-size: 10.5px; }
+
+  /* ─── FLOW ─── */
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 18px;
+  }
+  .flow-step {
+    flex: 1;
+    background: #eef8fb;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .step-num { font-size: 10px; font-weight: 700; color: var(--primary-light); letter-spacing: 0.08em; margin-bottom: 4px; }
+  .step-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+  .step-desc { font-size: 10.5px; color: var(--text-muted); line-height: 1.65; }
+  .flow-arrow { color: var(--accent); font-size: 18px; font-weight: 700; margin: 0 5px; display: flex; align-items: center; flex-shrink: 0; }
+
+  /* ─── NOTICE / INFO BOXES ─── */
+  .notice-box {
+    background: #f0f9fc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 10.5px;
+    color: #003344;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .notice-box strong { color: var(--primary); font-size: 10.5px; }
+
+  .info-box {
+    background: #fff9e8;
+    border: 1px solid #e8c060;
+    border-left: 4px solid var(--gold);
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 10.5px;
+    color: #5a4200;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .info-box strong { color: #9a6800; font-size: 10.5px; }
+
+  /* ─── FAQ ─── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .faq-item { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .faq-item--wide { grid-column: 1 / -1; }
+  .faq-q { background: #eef8fb; padding: 9px 13px; font-size: 12px; font-weight: 700; color: var(--primary); display: flex; gap: 8px; }
+  .q-mark { color: var(--accent); flex-shrink: 0; }
+  .faq-a { padding: 9px 13px; font-size: 10.5px; color: var(--text-muted); line-height: 1.75; display: flex; gap: 8px; }
+  .a-mark { color: var(--primary); font-weight: 700; flex-shrink: 0; }
+  .faq-more {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .faq-more summary {
+    cursor: pointer;
+    list-style: none;
+    background: #fff9e8;
+    color: #8a6200;
+    font-size: 11.5px;
+    font-weight: 900;
+    padding: 10px 14px;
+    border-left: 4px solid var(--gold);
+  }
+  .faq-more summary::-webkit-details-marker { display: none; }
+  .faq-more summary::after {
+    content: '＋';
+    float: right;
+    color: var(--gold);
+    font-weight: 900;
+  }
+  .faq-more[open] summary::after { content: '－'; }
+  .faq-more-body { padding: 10px; background: #fff; }
+
+  /* ─── DIVIDER ─── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* ─── FOOTER ─── */
+  .page-footer {
+    background: var(--primary-dark);
+    padding: 11px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .footer-brand { color: rgba(255,255,255,0.65); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; }
+  .footer-contact { color: rgba(255,255,255,0.45); font-size: 10.5px; }
+
+  @media print {
+    body { background: white; padding-top: 0; }
+    .doc-nav { display: none; }
+    .page { margin: 0; box-shadow: none; border-radius: 0; scroll-margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FIXED NAV -->
+<nav class="doc-nav">
+  <div class="nav-title">VOTEC</div>
+  <div class="nav-links">
+    <a href="#page1"><span class="nav-num">1</span>サービス概要</a>
+    <a href="#page2"><span class="nav-num">2</span>営業メリット</a>
+    <a href="#page3"><span class="nav-num">3</span>料金プラン</a>
+    <a href="#page4"><span class="nav-num">4</span>利用フロー・FAQ</a>
+  </div>
+</nav>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+  <div class="page-header">
+    <div class="header-left">
+      <div class="header-badge">定額制有料サービス｜営業担当者様向けご案内</div>
+      <h1>定額制バナー制作プラン<br>営業担当者向けご案内</h1>
+      <div class="subtitle">制作進行の負担を抑えながら、毎月の画像制作ニーズを継続提案につなげやすくする定額サービスです</div>
+    </div>
+    <div class="header-right">
+      <div class="brand">VOTEC</div>
+      <div class="page-num">1 / 4</div>
+      <div class="achievement">制作実績 100万枚以上！！</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="direction-hero">
+      <div class="direction-label">定額制サービス｜制作進行サポート対応可能</div>
+      <div class="direction-title">契約後の制作進行は、<strong>制作側にお任せいただけます</strong></div>
+      <div class="direction-copy">
+        ヒアリング、依頼内容の整理、制作進行、修正確認、納品まで、制作担当が店舗様とやり取りしながら進行します。
+      </div>
+      <div class="hero-catch">営業担当者様は、提案・契約・店舗様との関係構築に集中しやすくなります</div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-label">POINT 01</div>
+        <div class="impact-title">進行負担を減らせる</div>
+        <div class="impact-text">ヒアリング、依頼内容の整理、制作進行、修正確認、納品まで、原則制作側が主担当として進めます。</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-label">POINT 02</div>
+        <div class="impact-title">提案前に相談できる</div>
+        <div class="impact-text">店舗様の要望をどう形にするか、どこまで対応できるかを制作側で整理します。</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-label">POINT 03</div>
+        <div class="impact-title">継続売上につなげやすい</div>
+        <div class="impact-text">毎月の画像更新ニーズがある店舗様へ、スポットではなく定額制の継続提案として声をかけやすくなります。</div>
+      </div>
+    </div>
+
+    <div class="sales-cta-strip">
+      <div class="sales-cta-label">営業担当者様へ</div>
+      <div>
+        <div class="sales-cta-main">「毎月画像を更新したい」店舗様へ、提案しやすい定額制プランです。</div>
+        <div class="sales-cta-sub">制作内容・枚数・契約期間で迷う場合も、提案前に制作側へご相談いただけます。内容を一緒に整理したうえで、契約の最終判断は営業担当者様・店舗様にてお願いいたします。</div>
+      </div>
+    </div>
+
+    <div class="solution-banner">
+      <div style="flex:1;">
+        <div class="solution-label">定額制バナー制作プラン</div>
+        <div class="solution-text">3ヶ月・6ヶ月・9ヶ月・12ヶ月から選べる、定額制のバナー制作プランです</div>
+        <div class="solution-sub">契約期間分の料金を一括でお支払い｜リサイズ込み・修正2回無料・翌3営業日納品</div>
+      </div>
+      <div class="solution-price">
+        <div class="from">12ヶ月契約</div>
+        <div class="price-val">¥5,500</div>
+        <div class="per">/ 1枚　※最低3枚〜</div>
+      </div>
+    </div>
+
+    <div class="section-title">提案しやすい店舗様</div>
+    <div class="quick-targets">
+      <div class="quick-target">毎月バナー・SNS画像を更新したい店舗様</div>
+      <div class="quick-target">制作費用が高く、予算が読みにくい店舗様</div>
+      <div class="quick-target">季節イベントや月替わりの告知が多い店舗様</div>
+      <div class="quick-target">複数媒体の画像をまとめて整えたい店舗様</div>
+      <div class="quick-target">制作内容の相談先が欲しい店舗様</div>
+      <div class="quick-target">グループ店舗でまとめて活用したい場合</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">VOTEC</div>
+    <div class="footer-contact">定額制バナー制作プラン｜IMCご契約店舗様向け</div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="page-header">
+    <div class="header-left">
+      <div class="header-badge">定額制有料サービス｜営業担当者様向けご案内</div>
+      <h1>営業が提案しやすくなる理由</h1>
+      <div class="subtitle">受注後の制作進行を抱え込みにくいため、画像更新ニーズのある店舗様へ声をかけやすくなります</div>
+    </div>
+    <div class="header-right">
+      <div class="brand">VOTEC</div>
+      <div class="page-num">2 / 4</div>
+      <div class="achievement">制作実績 100万枚以上！！</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="section-title">営業にとっての具体的なメリット</div>
+    <div class="sales-merit-grid">
+      <div class="sales-merit-card">
+        <div class="sales-merit-num">MERIT 01</div>
+        <div class="sales-merit-title">受注後の負担を抑えやすい</div>
+        <div class="sales-merit-text">契約後の制作進行は制作側が主担当。営業担当者様だけで細かな進行を抱え込みにくくなります。</div>
+      </div>
+      <div class="sales-merit-card">
+        <div class="sales-merit-num">MERIT 02</div>
+        <div class="sales-merit-title">提案前に相談しやすい</div>
+        <div class="sales-merit-text">枚数、契約期間、制作内容で迷う場合も、提案前に制作側と一緒に整理できます。</div>
+      </div>
+      <div class="sales-merit-card">
+        <div class="sales-merit-num">MERIT 03</div>
+        <div class="sales-merit-title">継続売上を作りやすい</div>
+        <div class="sales-merit-text">スポット制作ではなく契約期間のある定額制のため、月ごとの制作ニーズを継続提案にしやすくなります。</div>
+      </div>
+    </div>
+
+    <div class="section-title">これまでとこれから</div>
+    <div class="before-after">
+      <div class="ba-panel before">
+        <div class="ba-head">これまで<div class="ba-sub">営業が制作進行まで抱えやすい</div></div>
+        <ul class="ba-list">
+          <li>店舗様へのヒアリング</li>
+          <li>要望整理・依頼内容の取りまとめ</li>
+          <li>制作依頼の作成・共有</li>
+          <li>修正内容の確認・伝達</li>
+          <li>納品までの進行調整</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">▶</div>
+      <div class="ba-panel after">
+        <div class="ba-head">これから<div class="ba-sub">制作進行は制作が主担当</div></div>
+        <ul class="ba-list">
+          <li>グループチャットまたはグループLINEでヒアリング</li>
+          <li>依頼内容・デザインの方向性を制作が整理</li>
+          <li>制作進行・修正対応を実施</li>
+          <li>完成画像の納品まで制作側で進行</li>
+          <li>営業は契約・請求・関係構築を担当</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ba-conclusion">契約後の制作進行は制作側が主担当として進行します。営業担当者様には案件全体の状況をご確認いただきながら、必要に応じて店舗様へのフォローをお願いいたします。</div>
+
+    <div class="section-title">案件化しやすい切り口</div>
+    <div class="opportunity-grid">
+      <div class="opportunity-card">
+        <div class="opportunity-head">更新が止まっている店舗様</div>
+        <div class="opportunity-body">HP・SNS・媒体画像が古いままの場合、「毎月の制作枠」として提案しやすいです。</div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-head">イベント告知が多い店舗様</div>
+        <div class="opportunity-body">季節イベント、求人、キャンペーン画像を、月ごとの制作枠として提案しやすいです。</div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-head">都度見積もりで止まりやすい店舗様</div>
+        <div class="opportunity-body">定額制で費用感を伝えやすいため、予算相談の入口を作れます。</div>
+      </div>
+      <div class="opportunity-card">
+        <div class="opportunity-head">複数店舗を運営している店舗様</div>
+        <div class="opportunity-body">グループ内で制作枠を活用できるため、まとめ提案・追加提案につなげやすいです。</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">VOTEC</div>
+    <div class="footer-contact">定額制バナー制作プラン｜IMCご契約店舗様向け</div>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <div class="page-header">
+    <div class="header-left">
+      <div class="header-badge">定額制有料サービス｜営業担当者様向けご案内</div>
+      <h1>定額制の料金プラン</h1>
+      <div class="subtitle">月3枚から利用できる定額制プラン｜リサイズ込み・修正2回無料・翌3営業日納品</div>
+    </div>
+    <div class="header-right">
+      <div class="brand">VOTEC</div>
+      <div class="page-num">3 / 4</div>
+      <div class="achievement">制作実績 100万枚以上！！</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="section-title">料金面で提案しやすいポイント</div>
+    <div class="quick-targets">
+      <div class="quick-target">月3枚から提案できるため、入口を作りやすい</div>
+      <div class="quick-target">契約期間が長いほど単価が下がり、継続利用のメリットを伝えやすい</div>
+      <div class="quick-target">初回お試しで、まず1ヶ月の導入提案がしやすい</div>
+    </div>
+
+    <div class="section-title">単価料金表</div>
+    <table class="unit-table">
+      <thead>
+        <tr>
+          <th>単価料金表</th>
+          <th class="th-trial">初回限定<br>お試しプラン</th>
+          <th class="th-plan">3ヶ月契約</th>
+          <th style="width:14px; background:#fff; border:none;"></th>
+          <th class="th-plan">6ヶ月契約</th>
+          <th style="width:14px; background:#fff; border:none;"></th>
+          <th class="th-plan">9ヶ月契約</th>
+          <th style="width:14px; background:#fff; border:none;"></th>
+          <th class="th-plan">12ヶ月契約</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1枚あたり</td>
+          <td class="td-trial">¥3,300</td>
+          <td>¥8,800</td>
+          <td class="arrow-cell">▶</td>
+          <td>¥7,700</td>
+          <td class="arrow-cell">▶</td>
+          <td>¥6,600</td>
+          <td class="arrow-cell">▶</td>
+          <td>¥5,500</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:10px; color:var(--text-muted); margin-bottom:14px;">※契約期間に応じて1枚単価が変動します　※初回お試しプランは1グループにつき1回限り</p>
+
+    <div class="trial-banner">
+      <div class="trial-label">初回限定 お試しプラン</div>
+      <div class="trial-main">
+        <div class="trial-title">まずは1ヶ月から導入しやすいお試しプラン</div>
+        <div class="trial-note">1グループにつき1回まで。定額制導入前の入口としてご提案ください。</div>
+      </div>
+      <div class="trial-price">
+        <div class="tp-val">¥9,900</div>
+        <div class="tp-unit">単月 / 3枚　（¥3,300 / 枚）</div>
+      </div>
+    </div>
+
+    <div class="section-title">料金シミュレーション</div>
+    <p style="font-size:10.5px; color:var(--text-muted); margin-bottom:10px;">上段：月額　下段（小）：契約期間の総額</p>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th class="th-l">枚数／月</th>
+          <th>3ヶ月契約</th>
+          <th class="th-rec">6ヶ月契約</th>
+          <th>9ヶ月契約</th>
+          <th>12ヶ月契約</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-l">3枚 ＋ リサイズ3</td>
+          <td><span class="cell-price">¥26,400</span><span class="cell-total">総額 ¥79,200</span></td>
+          <td class="col-rec"><span class="cell-price">¥23,100</span><span class="cell-total">総額 ¥138,600</span></td>
+          <td><span class="cell-price">¥19,800</span><span class="cell-total">総額 ¥178,200</span></td>
+          <td><span class="cell-price">¥16,500</span><span class="cell-total">総額 ¥198,000</span></td>
+        </tr>
+        <tr>
+          <td class="td-l">5枚 ＋ リサイズ5</td>
+          <td><span class="cell-price">¥44,000</span><span class="cell-total">総額 ¥132,000</span></td>
+          <td class="col-rec"><span class="cell-price">¥38,500</span><span class="cell-total">総額 ¥231,000</span></td>
+          <td><span class="cell-price">¥33,000</span><span class="cell-total">総額 ¥297,000</span></td>
+          <td><span class="cell-price">¥27,500</span><span class="cell-total">総額 ¥330,000</span></td>
+        </tr>
+        <tr>
+          <td class="td-l">10枚 ＋ リサイズ10</td>
+          <td><span class="cell-price">¥88,000</span><span class="cell-total">総額 ¥264,000</span></td>
+          <td class="col-rec"><span class="cell-price">¥77,000</span><span class="cell-total">総額 ¥462,000</span></td>
+          <td><span class="cell-price">¥66,000</span><span class="cell-total">総額 ¥594,000</span></td>
+          <td><span class="cell-price">¥55,000</span><span class="cell-total">総額 ¥660,000</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul class="price-note">
+        <li>最低契約枚数は3枚/月〜。以降は店舗様の更新頻度・制作内容に合わせて、必要枚数をご相談いただけます</li>
+        <li>ご契約時に契約期間分の料金を一括でお支払いいただきます</li>
+      <li>制作範囲：Web用静止画バナー（縦横合計3,000px以内）。印刷物・ロゴ・長尺LPは対象外です</li>
+      <li>契約枚数を超えた場合は、契約プランの1枚単価で追加発注が可能です</li>
+    </ul>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">VOTEC</div>
+    <div class="footer-contact">定額制バナー制作プラン｜IMCご契約店舗様向け</div>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <div class="page-header">
+    <div class="header-left">
+      <div class="header-badge">定額制有料サービス｜営業担当者様向けご案内</div>
+      <h1>ご利用フローと役割分担</h1>
+    <div class="subtitle">契約後の制作進行は制作が主担当。契約・請求・最終判断は営業担当者様と店舗様にてお願いいたします</div>
+    </div>
+    <div class="header-right">
+      <div class="brand">VOTEC</div>
+      <div class="page-num">4 / 4</div>
+      <div class="achievement">制作実績 100万枚以上！！</div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="section-title">ご利用フロー</div>
+    <p style="font-size:11px; color:var(--text-muted); margin-bottom:13px;">料金、契約期間、月間枚数、制作範囲などは、提案前に制作側へご相談いただけます。内容を整理したうえで見積もりを行い、契約・請求・入金確認・最終判断は営業担当者様および店舗様にてお願いいたします。</p>
+    <div class="flow-row">
+      <div class="flow-step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-title">事前相談・見積もり</div>
+        <div class="step-desc">料金・契約期間<br>制作内容を確認</div>
+      </div>
+      <div class="flow-arrow">▶</div>
+      <div class="flow-step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-title">契約・案件共有</div>
+        <div class="step-desc">営業担当が契約<br>請求・入金確認</div>
+      </div>
+      <div class="flow-arrow">▶</div>
+      <div class="flow-step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-title">連絡先へ招待</div>
+        <div class="step-desc">グループチャット<br>またはグループLINEへ招待</div>
+      </div>
+      <div class="flow-arrow">▶</div>
+      <div class="flow-step">
+        <div class="step-num">STEP 04</div>
+        <div class="step-title">ヒアリング・制作</div>
+        <div class="step-desc">制作側が主担当で<br>進行</div>
+      </div>
+      <div class="flow-arrow">▶</div>
+      <div class="flow-step">
+        <div class="step-num">STEP 05</div>
+        <div class="step-title">確認・納品</div>
+        <div class="step-desc">内容確定後<br>翌3営業日以内に納品</div>
+      </div>
+    </div>
+
+    <div class="notice-box">
+      <strong>【制作進行サポートについて】</strong><br>
+      本サービスは、月ごとの制作枠を契約期間でご利用いただく定額制の有料サービスです。制作担当が店舗様との制作窓口を担当し、制作内容のヒアリング、依頼内容の整理、制作進行、修正確認、納品までを主担当として進めます。
+    </div>
+
+    <div class="info-box">
+      <strong>【営業担当者様へのお願い】</strong><br>
+      案件獲得後も、案件責任者は引き続き営業担当者様となります。金銭に関わる対応、店舗情報の共有・関係構築、トラブル時のフォローは営業担当者様にてお願いいたします。制作進行は制作側が主担当で進めます。
+    </div>
+
+    <div class="section-title">重要事項（Q&A）</div>
+    <div class="faq-grid">
+      <div class="faq-item faq-item--wide">
+        <div class="faq-q"><span class="q-mark">Q</span>制作は店舗様とどのようにやり取りしますか？</div>
+          <div class="faq-a"><span class="a-mark">A</span><span>制作担当が制作内容の窓口を担当します。ヒアリング、依頼内容の整理、制作進行、修正確認、納品までを原則グループチャットまたはグループLINE内で進めます。</span></div>
+      </div>
+      <div class="faq-item faq-item--wide">
+        <div class="faq-q"><span class="q-mark">Q</span>契約・請求・最終判断は誰が対応しますか？</div>
+        <div class="faq-a"><span class="a-mark">A</span><span>制作側でも事前相談や制作範囲の確認は対応しますが、契約、請求、入金確認、返金、値引き、進行可否の最終判断は営業担当者様および店舗様にてお願いいたします。</span></div>
+      </div>
+      <div class="faq-item faq-item--wide">
+        <div class="faq-q"><span class="q-mark">Q</span>電話での打ち合わせはできますか？</div>
+        <div class="faq-a"><span class="a-mark">A</span><span>原則、電話対応は行っておりません。認識違いを防ぎ、確認履歴を残すため、グループチャットまたはグループLINE内でのやり取りをお願いいたします。</span></div>
+      </div>
+      <div class="faq-item faq-item--wide">
+        <div class="faq-q"><span class="q-mark">Q</span>制作範囲はどこまでですか？</div>
+        <div class="faq-a"><span class="a-mark">A</span><span>Web用静止画バナーの完成画像納品までです。公開、掲載、アップロード、差し替え作業は店舗様または営業担当者様にてお願いいたします。PSD・AI等の制作データ譲渡は別途費用が発生します。</span></div>
+      </div>
+      <div class="faq-item faq-item--wide">
+        <div class="faq-q"><span class="q-mark">Q</span>その他の基本条件は？</div>
+        <div class="faq-a"><span class="a-mark">A</span><span>修正は1デザインにつき2回まで無料です。初回指示から内容が大きく変わる場合は、新規制作として受付いたします。契約枚数超過分は同単価で追加発注可能です。</span></div>
+      </div>
+    </div>
+
+    <details class="faq-more">
+      <summary>その他FAQを確認する</summary>
+      <div class="faq-more-body">
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-q"><span class="q-mark">Q</span>未使用分の繰り越しはできますか？</div>
+            <div class="faq-a"><span class="a-mark">A</span>繰り越しは対応しておりません。契約枚数超過分は同単価で追加発注が可能です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span class="q-mark">Q</span>月途中でのプラン変更はできますか？</div>
+            <div class="faq-a"><span class="a-mark">A</span>契約期間中でも柔軟に対応します。ただし既払金の返金は対応しかねます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span class="q-mark">Q</span>グループ内の複数店舗で使えますか？</div>
+            <div class="faq-a"><span class="a-mark">A</span>グループ内での併用利用が可能です。枚数をシェアして費用を抑えることができます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span class="q-mark">Q</span>入稿はどうしたらいいですか？</div>
+            <div class="faq-a"><span class="a-mark">A</span>備考欄に「※定額制バナー制作」と記載のうえ、掲載枠【有料バナー画像制作費】で契約の全額にて入稿をお願いいたします。</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+  <div class="page-footer">
+    <div class="footer-brand">VOTEC</div>
+    <div class="footer-contact">定額制バナー制作プラン｜IMCご契約店舗様向け</div>
+  </div>
+</div>
+
+</body>
+</html>
