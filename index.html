@@ -8,14 +8,14 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap');
 
   :root {
-    --primary: #0088AA;
-    --primary-dark: #006688;
-    --primary-light: #00B0D8;
-    --accent: #00B0D8;
-    --accent-light: #DFF6FB;
-    --accent-warm: #e06b1a;
+    --primary: #2F7890;
+    --primary-dark: #255E70;
+    --primary-light: #5CA7BA;
+    --accent: #5CA7BA;
+    --accent-light: #E8F4F7;
+    --accent-warm: #B76A26;
     --gold: #c8920c;
-    --bg: #eef6fa;
+    --bg: #F2F7F9;
     --surface: #ffffff;
     --text: #1a1a1a;
     --text-muted: #555;
@@ -30,7 +30,7 @@
 
   body {
     font-family: 'Noto Sans JP', sans-serif;
-    background: #d8eef5;
+    background: #eef5f7;
     color: var(--text);
     font-size: 12px;
     line-height: 1.75;
@@ -156,16 +156,6 @@
   .header-right { text-align: right; flex-shrink: 0; }
   .header-right .brand { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 0.12em; }
   .header-right .page-num { font-size: 10.5px; color: rgba(255,255,255,0.55); margin-top: 4px; }
-  .header-right .achievement {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 3px;
-    padding: 4px 10px;
-    font-size: 10.5px;
-    color: rgba(255,255,255,0.9);
-    margin-top: 8px;
-    white-space: nowrap;
-  }
 
   /* ─── SECTION TITLE ─── */
   .section-title {
@@ -791,11 +781,22 @@
   .footer-contact { color: rgba(255,255,255,0.45); font-size: 10.5px; }
 
   /* ─── READABILITY / RESPONSIVE / PRINT OVERRIDES ─── */
-  body { font-size: 13.5px; }
+  body { font-size: 14px; line-height: 1.78; }
   .page { width: min(960px, 100%); }
-  .page-body { padding: 34px 44px 38px; }
-  .page-header h1 { font-size: 26px; }
-  .page-header .subtitle { font-size: 13px; }
+  .page-body { padding: 36px 46px 40px; }
+  .page-header { background: #2F7890; }
+  .page-header h1 { font-size: 27px; }
+  .page-header .subtitle { font-size: 13.5px; color: rgba(255,255,255,0.86); }
+  .solution-banner,
+  .direction-hero { background: #255E70; }
+  .sales-cta-strip { border-color: #E4CFAD; border-left-color: var(--accent-warm); }
+  .impact-card,
+  .sales-merit-card,
+  .opportunity-card,
+  .target-card,
+  .scene-card,
+  .faq-item,
+  .billing-card { background: #fff; }
   .header-badge,
   .section-title,
   .direction-label,
@@ -806,22 +807,47 @@
   .sales-cta-sub,
   .solution-sub,
   .quick-target,
+  .pain-text,
   .sales-merit-text,
   .opportunity-body,
   .scene-body,
   .step-desc,
   .notice-box,
+  .info-box,
   .faq-a,
   .price-note,
   .billing-body,
-  .target-text { font-size: 12.5px; line-height: 1.75; }
+  .target-text,
+  .trial-note,
+  .cell-total,
+  .matrix-table td,
+  .unit-table td { font-size: 13px; line-height: 1.8; }
   .faq-q,
   .step-title,
   .sales-merit-title,
-  .impact-title { font-size: 13px; }
+  .impact-title,
+  .trial-title,
+  .scene-head,
+  .matrix-table th,
+  .unit-table th { font-size: 14px; line-height: 1.65; }
+  .impact-label,
+  .sales-merit-num,
+  .solution-label,
+  .direction-label,
+  .step-num,
+  .info-box strong,
+  .notice-box strong { font-size: 12px; }
+  .unit-table,
+  .matrix-table,
+  .price-table,
+  .plan-table { font-size: 13.5px; }
+  .unit-table th,
+  .unit-table td,
+  .matrix-table th,
+  .matrix-table td { padding: 12px 14px; }
   .footer-contact { font-size: 11.5px; }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     body { padding-top: 0; background: #fff; font-size: 14px; }
     .doc-nav {
       position: sticky;
@@ -926,7 +952,6 @@
     <div class="header-right">
       <div class="brand">VOTEC</div>
       <div class="page-num">1 / 4</div>
-      <div class="achievement">制作実績 100万枚以上！！</div>
     </div>
   </div>
 
@@ -1008,7 +1033,6 @@
     <div class="header-right">
       <div class="brand">VOTEC</div>
       <div class="page-num">2 / 4</div>
-      <div class="achievement">制作実績 100万枚以上！！</div>
     </div>
   </div>
 
@@ -1097,7 +1121,6 @@
     <div class="header-right">
       <div class="brand">VOTEC</div>
       <div class="page-num">3 / 4</div>
-      <div class="achievement">制作実績 100万枚以上！！</div>
     </div>
   </div>
 
@@ -1216,7 +1239,6 @@
     <div class="header-right">
       <div class="brand">VOTEC</div>
       <div class="page-num">4 / 4</div>
-      <div class="achievement">制作実績 100万枚以上！！</div>
     </div>
   </div>
 
