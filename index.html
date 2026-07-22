@@ -1005,6 +1005,107 @@
     color: #44575f;
   }
 
+  /* ─── SEAMLESS VISUAL TONE ─── */
+  body {
+    background: #f3f7f8;
+    color: #18282e;
+  }
+  .page {
+    box-shadow: 0 8px 28px rgba(30, 70, 82, 0.08);
+    border: 1px solid rgba(47, 120, 144, 0.08);
+  }
+  .doc-nav {
+    background: rgba(37, 94, 112, 0.96);
+    box-shadow: 0 2px 14px rgba(20, 56, 68, 0.16);
+  }
+  .nav-title,
+  .page-header h1,
+  .header-right .brand {
+    font-weight: 700;
+  }
+  .header-badge,
+  .section-title,
+  .direction-label,
+  .solution-label,
+  .impact-label,
+  .sales-merit-num,
+  .step-num {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .direction-hero {
+    background: linear-gradient(135deg, #255E70 0%, #2F7890 100%);
+    box-shadow: 0 10px 28px rgba(37, 94, 112, 0.16);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .direction-hero::before {
+    top: 18px;
+    right: 20px;
+    width: auto;
+    transform: none;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+  }
+  .direction-title {
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .direction-title strong {
+    color: #ffe7a3;
+    background: transparent;
+    padding: 0;
+  }
+  .direction-copy {
+    color: rgba(255,255,255,0.88);
+  }
+  .hero-catch {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 999px;
+  }
+  .solution-banner {
+    background: #255E70;
+    box-shadow: 0 8px 22px rgba(37, 94, 112, 0.12);
+  }
+  .solution-price .price-val {
+    color: #ffe7a3;
+    font-weight: 700;
+  }
+  .impact-card {
+    border-top: 0;
+    border-left: 4px solid var(--accent-warm);
+    box-shadow: 0 6px 18px rgba(37, 94, 112, 0.07);
+    text-align: left;
+  }
+  .impact-label {
+    background: transparent;
+    color: #946614;
+    padding: 0;
+    border-radius: 0;
+  }
+  .impact-title,
+  .sales-merit-title,
+  .ba-head,
+  .faq-q,
+  .step-title,
+  .trial-title {
+    font-weight: 700;
+  }
+  .ba-conclusion,
+  .ba-list li,
+  .after .ba-list li,
+  .role-main {
+    font-weight: 600;
+  }
+
   @media screen and (max-width: 980px) {
     body { padding-top: 0; background: #fff; font-size: 14px; }
     .doc-nav {
