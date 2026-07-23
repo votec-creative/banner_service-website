@@ -663,6 +663,8 @@
   /* ─── MATRIX TABLE (compact) ─── */
   .matrix-table {
     width: 100%;
+    min-width: 760px;
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 11.5px;
     margin-bottom: 10px;
@@ -674,6 +676,8 @@
   .matrix-table th:last-child { border-radius: 0 4px 0 0; }
   .matrix-table td { padding: 8px 10px; border: 1px solid var(--border); text-align: center; vertical-align: middle; }
   .matrix-table td.td-l { text-align: left; font-weight: 700; background: #eef8fb; color: var(--primary); font-size: 11px; }
+  .matrix-table th.th-l,
+  .matrix-table td.td-l { width: 22%; }
   .cell-price { font-size: 12px; font-weight: 700; color: var(--primary); display: block; }
   .cell-total { font-size: 9px; color: var(--text-muted); display: block; margin-top: 1px; }
   .col-rec { background: #fffbf0; }
@@ -860,6 +864,10 @@
   .unit-table td,
   .matrix-table th,
   .matrix-table td { padding: 12px 14px; }
+  .matrix-table {
+    width: 100%;
+    min-width: 820px;
+  }
   .footer-contact { font-size: 11.5px; }
 
   /* ─── SMALL TEXT READABILITY FLOOR ─── */
@@ -1140,6 +1148,14 @@
     border-color: #d7edf3;
     color: #2b505b;
   }
+  .before-after {
+    grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+    gap: 14px;
+  }
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+  }
 
   @media screen and (max-width: 980px) {
     body { padding-top: 0; background: #fff; font-size: 14px; }
@@ -1216,11 +1232,22 @@
     .scene-grid,
     .faq-grid,
     .billing-grid { grid-template-columns: 1fr; }
-    .before-after { grid-template-columns: 1fr; gap: 8px; }
-    .ba-arrow { transform: rotate(90deg); margin: 2px 0; }
-    .flow-row { display: block; }
-    .flow-step { margin-bottom: 8px; }
-    .flow-arrow { justify-content: center; transform: rotate(90deg); margin: 4px 0; }
+    .before-after {
+      grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+      gap: 8px;
+    }
+    .ba-arrow { transform: none; margin: 0; font-size: 20px; }
+    .flow-row {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .flow-step {
+      min-width: 150px;
+      margin-bottom: 0;
+    }
+    .flow-arrow { justify-content: center; transform: none; margin: 0 4px; }
     .price-table,
     .plan-table,
     table {
@@ -1228,8 +1255,19 @@
       overflow-x: auto;
       white-space: nowrap;
     }
+    .matrix-table {
+      min-width: 820px;
+    }
     .page-footer { display: block; padding: 10px 16px; }
     .footer-contact { margin-top: 4px; }
+  }
+
+  @media screen and (max-width: 680px) {
+    .before-after { grid-template-columns: 1fr; gap: 8px; }
+    .ba-arrow { transform: rotate(90deg); margin: 2px 0; }
+    .flow-row { display: block; overflow-x: visible; padding-bottom: 0; }
+    .flow-step { min-width: 0; margin-bottom: 8px; }
+    .flow-arrow { justify-content: center; transform: rotate(90deg); margin: 4px 0; }
   }
 
   @media print {
